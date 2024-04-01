@@ -1,6 +1,9 @@
+use graph::Graph;
+
 use crate::{binary_search_tree::BinarySearchTree, hash_table::HashTable, linked_list::LinkedList};
 
 mod binary_search_tree;
+mod graph;
 mod hash_table;
 mod linked_list;
 
@@ -8,6 +11,7 @@ fn main() {
     run_linked_list();
     run_binary_search_tree();
     run_hash_table();
+    run_graph();
 }
 
 fn run_linked_list() {
@@ -42,4 +46,15 @@ fn run_hash_table() {
     hash.insert(String::from("Joza"), 1_500_000);
     let x: String = String::from("Marko");
     println!("value for {} = {}", x, hash.get(&x).unwrap());
+}
+
+fn run_graph() {
+    let mut g = Graph::new(5);
+    g.add_edge(0, 1);
+    g.add_edge(0, 2);
+    g.add_edge(0, 3);
+    g.add_edge(3, 4);
+    g.add_edge(4, 2);
+    g.print_graph();
+    g.dfs();
 }
